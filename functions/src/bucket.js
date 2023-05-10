@@ -14,7 +14,7 @@ export async function addNewItem (req, res) {
 export async function getAllItems (req, res) {
   const collection = await coll.get()
     .catch(err => res.status(500).send(err))
-  const itemList = collection.docs.map(doc => ({...doc.data(), id: doc.Id}))
+  const itemList = collection.docs.map(doc => ({...doc.data(), id: doc.id}))
   res.send(itemList)
 }
 
