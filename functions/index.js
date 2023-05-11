@@ -2,6 +2,7 @@ import functions from 'firebase-functions';
 import express from 'express';
 import cors from 'cors';
 import { addNewItem, deleteItem, editItem, getAllItems } from './src/bucket.js';
+import { login, signup } from './src/users.js';
 
 const app = express()
 
@@ -11,6 +12,9 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.send('Hello World!')
 }) 
+
+app.post('/login', login)
+app.post('/signup', signup)
 
 app.get('/bucket', getAllItems)
 app.post('/bucket', addNewItem)
